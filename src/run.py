@@ -2,14 +2,11 @@
 from PIL import Image
 import cv2
 import numpy as np
-import requests
-
-filename = 'https://a57.foxnews.com/media.foxbusiness.com/BrightCove/854081161001/201805/2879/931/524/854081161001_5782482890001_5782477388001-vs.jpg'
-cascades = 'cars.xml'
+from utils.constants import filename, cascades
 
 def get_image(filename):
     # Reading image
-    image = Image.open(requests.get(filename,stream=True).raw)
+    image = Image.open(filename)
     image = image.resize((450, 250))
     image_arr = np.array(image)
     return image, image_arr
